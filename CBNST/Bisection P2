@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <math.h>
+
+float equation(float x) {
+    return (x*x*x-5*x+1);
+}
+void bisection(double a, double b, double er) {
+
+    if (equation(a) * equation(b) >= 0) {
+        printf("The function has same signs at a and b. Bisection method cannot be applied.\n");
+        return;
+    }
+
+    double c = a;
+    int iterations = 0;
+    while ((b - a) >= er) {
+        c = (a + b) / 2;
+
+        if (equation(c) == 0.0) {
+            break;
+        } else if (equation(c) * equation(a) < 0) {
+            b = c;
+        } else {
+            a = c;
+        }
+        printf("Iteration %d - Approximate root: %lf\n", iterations + 1, c);
+        iterations++;
+    }
+}
+
+int main() {
+    double a, b, c;
+    printf("\nEnter the interval [a, b] where you suspect a root: ");
+    scanf("%lf %lf", &a, &b);
+    printf("Enter The Approximated Error: ");
+    scanf("%lf",&c);
+
+    printf("Starting bisection method...\n");
+    bisection(a, b, c);
+    printf("\n");
+    return 0;
+}
