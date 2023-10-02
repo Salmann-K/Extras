@@ -1,0 +1,46 @@
+#include<stdio.h>
+#include<math.h>
+#define SIZE 10
+float f1(float a[SIZE][SIZE],float x,float y,float z){
+    return ((a[1][4]-a[1][2]*y-a[1][3]*z)/a[1][1]);
+}
+float f2(float a[SIZE][SIZE],float x,float y,float z){
+    return ((a[2][4]-a[2][1]*x-a[2][3]*z)/a[2][2]);
+}
+float f3(float a[SIZE][SIZE],float x,float y,float z){
+    return ((a[3][4]-a[3][1]*x-a[3][2]*y)/a[3][3]);
+}
+int main(){
+float a[SIZE][SIZE];
+ float x0=0, y0=0, z0=0, x1, y1, z1, e1, e2, e3, e;
+ int count=1,i,j,n=3;
+ printf("Enter The Equations In the form of Matrix\n");
+ for(i=1;i<=n;i++){
+			  for(j=1;j<=n+1;j++){
+				   printf("a[%d][%d] = ",i,j);
+				   scanf("%f", &a[i][j]);
+			  }
+		 }
+ printf("Enter tolerable error:\n");
+ scanf("%f", &e);
+
+ printf("\nCount\tx\ty\tz\n");
+ do
+ {
+  x1 = f1(a,x0,y0,z0);
+  y1 = f2(a,x1,y0,z0);
+  z1 = f3(a,x1,y1,z0);
+  printf("%d\t%0.4f\t%0.4f\t%0.4f\n",count, x1,y1,z1);
+  e1 = fabs(x0-x1);
+  e2 = fabs(y0-y1);
+  e3 = fabs(z0-z1);
+
+  count++;
+  x0 = x1;
+  y0 = y1;
+  z0 = z1;
+
+ }while(e1>e && e2>e && e3>e);
+ printf("\nSolution: x=%0.3f, y=%0.3f and z = %0.3f\n",x1,y1,z1);
+ return 0;
+}
