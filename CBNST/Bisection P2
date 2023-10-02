@@ -1,42 +1,35 @@
-#include <stdio.h>
-#include <math.h>
-
-float equation(float x) {
+#include<stdio.h>
+#include<math.h>
+float f(float x){
     return (x*x*x-5*x+1);
 }
-void bisection(double a, double b, double er) {
-
-    if (equation(a) * equation(b) >= 0) {
-        printf("The function has same signs at a and b. Bisection method cannot be applied.\n");
-        return;
-    }
-
-    double c = a;
-    int iterations = 0;
-    while ((b - a) >= er) {
-        c = (a + b) / 2;
-
-        if (equation(c) == 0.0) {
-            break;
-        } else if (equation(c) * equation(a) < 0) {
-            b = c;
-        } else {
-            a = c;
+int main(){
+    float x,x1,x2,aer;
+    int flag,itr=0;;
+    do{
+        printf("Enter x0 and x1 ");
+        scanf("%f %f",&x1,&x2);
+        if(f(x1)*f(x2)<0){
+            flag=1;
+            printf("\nRoot lies Between %f and %f ",x1,x2);
+        }else{
+            printf("Wrong Interval ");
         }
-        printf("Iteration %d - Approximate root: %lf\n", iterations + 1, c);
-        iterations++;
-    }
-}
-
-int main() {
-    double a, b, c;
-    printf("\nEnter the interval [a, b] where you suspect a root: ");
-    scanf("%lf %lf", &a, &b);
-    printf("Enter The Approximated Error: ");
-    scanf("%lf",&c);
-
-    printf("Starting bisection method...\n");
-    bisection(a, b, c);
-    printf("\n");
+    }while(flag!=1);
+    printf("\nEnter Allowed Error ");
+    scanf("%f",&aer);
+    do{
+        x=(x1+x2)/2;
+        if(f(x1)*f(x)<0){
+            x2=x;
+        }
+        else{
+            x1=x;
+        }
+        itr++;
+        printf("Iteration no = %d ",itr );
+        printf("Root = %f ",x);
+        printf("Value Of Function = %f\n",f(x));
+    }while((x2-x1) > aer);
     return 0;
 }
