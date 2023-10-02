@@ -1,0 +1,28 @@
+#include<stdio.h>
+#include<math.h>
+float f(float x){
+    return (x*x*x-5*x+1);
+}
+float df(float x){
+    return (3*x*x-5);
+}
+int main(){
+    float h,x0,x1,aer;
+    int itr=0;
+        printf("Enter x0 and Allowed Error ");
+        scanf("%f %f",&x0,&aer);
+        if(df(x0)==0){
+            printf("Failed");
+            return 0;
+        }
+    do{
+        h=f(x0)/df(x0);
+        x1=x0-h;
+        itr++;
+        printf("Iteration no = %d ",itr );
+        printf("X = %f ",x1);
+        printf("Value Of Function = %f\n",f(x1));
+        x0=x1;
+    }while(fabs(h) > aer);
+    return 0;
+}
