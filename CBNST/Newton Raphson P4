@@ -26,3 +26,5 @@ int main(){
     }while(fabs(h) > aer);
     return 0;
 }
+
+//0.5   0.00001
