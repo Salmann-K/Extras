@@ -1,0 +1,34 @@
+#include<stdio.h>
+#include <sys/types.h> 
+#include <unistd.h> 
+int main(){
+    int n;
+    printf("Enter the sizeof an array: ");
+    scanf("%d",&n);
+    int arr[n];
+    printf("Enter the datas in an array: ");
+    for(int i=0;i<n;i++){
+        scanf("%d",&arr[i]);
+    }
+    int sumeve=0,sumoddd=0;
+    int a=fork();
+    if(!a){
+        for(int i=0;i<n;i++){
+            if(arr[i]%2!=0){
+                printf("\n The even number is%d ",arr[i]);
+                sumoddd+=arr[i];
+            }
+        }
+        printf("\nthe sum of odd number is %d",sumoddd);
+    }
+    else{
+        for (int i = 0; i < n; i++){
+            if(arr[i]%2==0){
+                printf("\n The odd numbers are: %d",arr[i]);
+                sumeve+=arr[i];
+            }
+        }
+                printf("\nthe sum of odd number is %d",sumeve);
+    }
+    return 0;
+}
