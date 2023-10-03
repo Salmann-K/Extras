@@ -28,3 +28,5 @@ void main(){
 	 }while(fabs(f2)>e);
 	 printf("\nRoot is: %f", x2);
 }
+
+// 2 3  0.00001
