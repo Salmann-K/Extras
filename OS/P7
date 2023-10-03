@@ -1,0 +1,85 @@
+#include <stdio.h>
+#include <limits.h>
+
+struct Process {
+    int id;
+    int at;
+    int bt;
+    int rt;
+    int ct;
+    int tat;
+    int wt;
+};
+
+void srtf(struct Process p[], int n) {
+    int t = 0, comp = 0;
+    float twt = 0, ttat = 0;
+    
+    for (int i = 0; i < n; i++) {
+        p[i].rt = p[i].bt;
+    }
+
+    while (comp < n) {
+        int shortest = -1;
+        int min_rt = INT_MAX;
+
+        for (int i = 0; i < n; i++) {
+            if (p[i].at <= t && p[i].rt < min_rt && p[i].rt > 0) {
+                min_rt = p[i].rt;
+                shortest = i;
+            }
+        }
+
+        if (shortest == -1) {
+            t++;
+        } else {
+            p[shortest].rt--;
+
+            if (p[shortest].rt == 0) {
+                comp++;
+                p[shortest].ct = t+1;
+                p[shortest].tat = p[shortest].ct - p[shortest].at;
+                p[shortest].wt = p[shortest].tat - p[shortest].bt;
+                t++;
+                twt += p[shortest].wt;
+                ttat += p[shortest].tat;
+            } else {
+                t++;
+            }
+        }
+    }
+
+    float awt = twt / n;
+    float atat = ttat / n;
+
+    printf("P\tAT\tBT\tCT\tTAT\tWT\n");
+
+    for (int i = 0; i < n; i++) {
+        printf("%d\t%d\t%d\t%d\t%d\t%d\n", p[i].id, p[i].at, p[i].bt, p[i].ct, p[i].tat, p[i].wt);
+    }
+
+    printf("Avg WT: %.2f\n", awt);
+    printf("Avg TAT: %.2f\n", atat);
+}
+
+int main() {
+    int n;
+
+    printf("Enter number of processes: ");
+    scanf("%d", &n);
+
+    struct Process p[n];
+
+    for (int i = 0; i < n; i++) {
+        p[i].id = i + 1;
+        printf("Enter arrival time for process %d: ", i + 1);
+        scanf("%d", &p[i].at);
+        printf("Enter burst time for process %d: ", i + 1);
+        scanf("%d", &p[i].bt);
+        p[i].rt = p[i].bt;
+    }
+
+    srtf(p, n);
+
+    return 0;
+}
