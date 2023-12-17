@@ -33,3 +33,6 @@ int main(){
     }while(fabs(f(x)) > aer);
     return 0;
 }
+
+// 2 3
+// 0.00001
