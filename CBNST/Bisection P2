@@ -33,3 +33,6 @@ int main(){
     }while((x2-x1) > aer);
     return 0;
 }
+
+// 2 3
+// 0.00001
