@@ -29,3 +29,5 @@ int main()
  printf("\nRequired value of integration is: %.3f", integration);
  return 0;
 }
+
+// 2 6 4
