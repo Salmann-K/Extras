@@ -30,3 +30,10 @@ void main(){
 	 }
 	 printf("Interpolated value at %.3f is %.3f.", xp, yp);
 }
+
+// 5 150
+// 7 392
+// 11 1452
+// 13 2366
+// 17 5202
+// 9
