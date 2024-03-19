@@ -1,0 +1,184 @@
+/*
+//p1
+
+
+%{
+#include<stdio.h>
+int tabs=0,spaces=0,newline=0,character=0;
+%}
+
+%%
+[\t] tabs++;
+[" "] spaces++;
+ [\n] newline++;
+[^\n\t" "] character++;
+%%
+
+int yywrap(){ 
+    return 1;
+}
+
+int main(){ 
+    printf("Enter here\n");
+    yylex();
+    printf("Tabs::%d\n",tabs);
+    printf("Spaces::%d\n",spaces); 
+    printf("Characters::%d\nLines::%d\n",character,newline);
+}
+
+*/
+
+/*
+//p2
+
+%{
+#include<stdio.h>
+%}
+
+%%
+^[a-zA-Z_][a-zA-Z0-9_]* printf("valid Identifier\n");
+^[^a-zA-Z_][a-zA-Z0-9_]* printf("invalid Identifier\n");
+.;
+%%
+
+int yywrap(){ 
+    return 1;
+}
+int main() { 
+    printf("Enter string::"); 
+    yylex();
+    return 0;
+}
+
+*/
+
+/*
+//p3
+
+%{
+#include<stdio.h>
+%}
+
+%%
+^[-+]?[0-9]*"."[0-9]* {printf("\nDecimal Number\n");}  
+
+^[-+]?[0-9]* {printf("\nInteger Number\n");}			
+
+%%
+int yywrap()		{
+    return 1;
+}
+
+int main(void){
+yylex();
+return 0;
+}
+
+*/
+
+/*
+//p4
+
+%{
+#include<stdio.h>
+%}
+
+
+%%
+auto|double|int|struct|break|else|long|switch|case|enum|register|typedef|char|extern|return|union|continue|for|signed|void|do|if|static|while|default|goto|sizeof|volatile|const|float|short     {printf("\nKEYWORD\n");}
+[{};,()]   {printf("\tSEPERATOR\t");}
+[+-/=*%]   { printf("\tOPERATOR\t");}	
+[a-zA-Z][0-9]+|[a-zA-Z]* {printf("\tIdentifier\t");} 										
+%%
+
+int yywrap()								
+{
+return 1;
+}
+
+int main(void)
+{
+yylex();
+return 0;
+}
+
+*/
+
+/*
+//p5
+
+%{
+#include<stdio.h>
+int tchar=0,tword=0,tspace=0;
+%}
+
+%%
+
+" " {tspace++;tword++;}
+[\t\n] tword++;
+[^\n\t] tchar++;
+
+%%
+
+int yywrap(){
+    return 1;
+}
+
+int main(){
+    extern FILE *yyin;
+    yyin=fopen("abc.txt","r");
+    yylex();
+    printf("Number of character:: %d\nNumber of words:: %d\nNumber of spaces:: %d\n",tchar,tword,tspace);
+    return 0;
+}
+
+*/
+
+/*
+//p6
+
+%{
+#include<stdio.h>
+%}
+
+%%
+[\t" "]+ fprintf(yyout," ");
+.|\n fprintf(yyout,"%s",yytext);
+%%
+
+int yywrap(){ 
+    return 1;
+}
+int main(){ 
+    extern FILE *yyin,*yyout;
+    yyin=fopen("abc.txt","r"); 
+    yyout=fopen("output.txt","w"); 
+    yylex();
+}
+
+*/
+
+/*
+//p8
+
+%{
+#include<stdio.h>
+#include<stdlib.h>
+%}
+
+%%
+"<"[^>]*> { fprintf(yyout,"%s",yytext); } 
+.    ;
+%%
+
+int yywrap(){
+     return 1;
+}
+int main(){
+    extern FILE *yyin,*yyout; 
+    yyin=fopen("abc.txt","r"); 
+    yyout=fopen("Output.txt","w");
+     yylex();
+}
+
+*/
