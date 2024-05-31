@@ -1,6 +1,9 @@
 %{
+    #include<stdio.h>
 %}
+
 %s A B C D E F G DEAD
+
 %%
 <INITIAL>b BEGIN INITIAL;
 <INITIAL>a BEGIN A;
