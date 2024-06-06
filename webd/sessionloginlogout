@@ -1,0 +1,83 @@
+// login.php
+
+<?php
+session_start();
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    // Dummy user credentials
+    $validUsername = 'user';
+    $validPassword = 'password';
+
+    if ($username == $validUsername && $password == $validPassword) {
+        $_SESSION['username'] = $username;
+
+        // Hardcoded user preferences
+        $_SESSION['bg_image'] = 'background.jpg';  // Assuming this image exists in the project directory
+        $_SESSION['font_color'] = '#0000FF';  // Blue color
+        $_SESSION['font'] = 'Verdana';
+
+        header('Location: welcome.php');
+        exit;
+    } else {
+        echo "Invalid username or password";
+    }
+}
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+</head>
+<body>
+    <h1>Login</h1>
+    <form method="post" action="login.php">
+        Username: <input type="text" name="username" required><br>
+        Password: <input type="password" name="password" required><br>
+        <input type="submit" value="Login">
+    </form>
+</body>
+</html>
+
+//welcome.php
+
+<?php
+session_start();
+
+if (!isset($_SESSION['username'])) {
+    header('Location: login.php');  // Redirect to login page if not logged in
+    exit;
+}
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome</title>
+    <style>
+        body {
+            background-image: url('<?php echo $_SESSION['bg_image']; ?>');
+            color: <?php echo $_SESSION['font_color']; ?>;
+            font-family: <?php echo $_SESSION['font']; ?>;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome, <?php echo $_SESSION['username']; ?>!</h1>
+    <a href="logout.php">Logout</a>
+</body>
+</html>
+
+//logout.php
+
+<?php
+session_start();
+session_unset();
+session_destroy();
+
+header('Location: index.php');  // Redirect to home page after logout
+exit;
+?>
