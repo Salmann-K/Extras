@@ -1,0 +1,111 @@
+//App.js
+
+import './App.css';
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Header from './comp/Header';
+import Footer from './comp/Footer';
+import Home from './comp/Home';
+import About from './comp/About';
+import Contact from './comp/Contact';
+
+function App() {
+  return (
+    <BrowserRouter>
+      <div>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+        <Footer />
+      </div>
+    </BrowserRouter>
+  );
+}
+
+export default App;
+
+//Header.jsx
+
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+function Header() {
+  return (
+    <div>
+        <nav>
+            <ul>
+                <li><Link to="/">Home</Link></li>
+                <li><Link to="/about">About</Link></li>
+                <li><Link to="/contact">Contact</Link></li>
+            </ul>
+        </nav>
+    </div>
+  );
+}
+
+export default Header;
+
+
+// Home.jsx
+
+import React from 'react';
+
+function Home() {
+  return (
+    <div>
+      <h1>Home Page</h1>
+      <p>Welcome to the home page!</p>
+    </div>
+  );
+}
+
+export default Home;
+
+
+//Contact.jsx
+
+import React from 'react';
+
+function Contact() {
+  return (
+    <div>
+      <h1>Contact Page</h1>
+      <p>This is the contact page.</p>
+    </div>
+  );
+}
+
+export default Contact;
+
+//About.jsx
+
+import React from 'react';
+
+function About() {
+  return (
+    <div>
+      <h1>About Page</h1>
+      <p>This is the about page.</p>
+    </div>
+  );
+}
+
+export default About;
+
+
+//Footer.jsx
+
+import React from 'react';
+
+function Footer() {
+  return (
+    <div>
+      <p>&copy; 2024 Your Company. All rights reserved.</p>
+    </div>
+  );
+}
+
+export default Footer;
