@@ -1,0 +1,689 @@
+Q-1 Create a sample GEHU website using HTML5 semantic tags.
+<!DOCTYPE html>
+<head>
+    <title>Graphic Era Hill University (GEHU)</title>
+    <style>
+        header, nav, main, section, article, footer {
+            padding: 1em;
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding: 1em 0;
+            text-align: center;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+        nav ul li a {
+            color: #333;
+            text-decoration: none;
+        }
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1em 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Graphic Era Hill University (GEHU)</h1>
+        <p>Empowering Education, Enriching Lives</p>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#programs">Programs</a></li>
+            <li><a href="#admissions">Admissions</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section id="home">
+            <h2>Welcome to GEHU</h2>
+            <p>Graphic Era Hill University is a place where talent meets opportunity.</p>
+        </section>
+        <section id="about">
+            <h2>About Us</h2>
+            <p>Founded in 2011, GEHU has quickly become a leading institution in the field of higher education.</p>
+        </section>
+        <section id="programs">
+            <h2>Our Programs</h2>
+            <article>
+                <h3>Engineering</h3>
+                <p>Our engineering programs are designed to equip students with the skills needed to excel in the rapidly changing technology landscape.</p>
+            </article>
+            <article>
+                <h3>Management</h3>
+                <p>The management programs at GEHU aim to develop future leaders with a strong ethical foundation and global perspective.</p>
+            </article>
+            <article>
+                <h3>Arts & Humanities</h3>
+                <p>Explore our diverse range of programs in arts and humanities, fostering creativity and critical thinking.</p>
+            </article>
+        </section>
+        <section id="admissions">
+            <h2>Admissions</h2>
+            <p>Join our vibrant community of learners.</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Graphic Era Hill University. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+
+ 
+Q2) Insert audio and video into a webpage keeping in mind multiple formats.
+
+<!DOCTYPE html>
+<head>
+    <title>Explore the World - Travel Website</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        header, footer {
+            text-align: center;
+            padding: 1em;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Explore the World</h1>
+        <p>Your Gateway to Amazing Travel Experiences</p>
+    </header>
+
+    <nav>
+        <ul style="list-style: none; text-align: center; padding: 0;">
+            <li style="display: inline; margin: 0 10px;"><a href="#destinations">Destinations</a></li>
+            <li style="display: inline; margin: 0 10px;"><a href="#tours">Tours</a></li>
+            <li style="display: inline; margin: 0 10px;"><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main style="padding: 1em; max-width: 800px; margin: 0 auto;">
+        <section id="destinations">
+            <h2>Top Destinations</h2>
+            <p>Discover the most beautiful places in the world.</p>
+            <audio controls preload="auto" loop>
+                <source src="audio/travel-music.mp3" type="audio/mpeg">
+                <source src="audio/travel-music.ogg" type="audio/ogg">
+                <source src="audio/travel-music.wav" type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        </section>
+
+        <section id="tours">
+            <h2>Guided Tours</h2>
+            <p>Join our guided tours to explore amazing places.</p>
+            <video controls width="600" preload="metadata" poster="video/tour-thumbnail.jpg">
+                <source src="video/tour-video.mp4" type="video/mp4">
+                <source src="video/tour-video.ogg" type="video/ogg">
+                <source src="video/tour-video.webm" type="video/webm">
+                Your browser does not support the video tag.
+            </video>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Explore the World. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+ 
+Q3) Demonstrate various types of CSS positioning.
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Graphic Era Hill University (GEHU)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif; margin: 0; padding: 0;
+        }
+        header, nav, main, section, article, footer {
+            padding: 1em; margin: 0 auto; max-width: 1200px;
+        }
+        header {
+            background: #333; color: #fff;  padding: 1em 0; text-align: center;
+        }
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1em 0;
+        }
+        .box {
+            padding: 20px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+        }
+        .static {
+            background-color: lightblue;
+            position: static; /* Default positioning */
+        }
+        .relative {
+            background-color: lightgreen;
+            position: relative;
+            top: 10px;
+            left: 20px;
+        }
+        .absolute-container {
+            position: relative
+            height: 200px; 
+            border: 1px solid #000;
+            margin: 10px 0;
+        }
+        .absolute {
+            background-color: lightcoral;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 200px;
+        }
+        .fixed {
+            background-color: lightgoldenrodyellow;
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            width: 200px;
+        }
+        .sticky {
+            background-color: lightpink;
+            position: -webkit-sticky; /* For Safari */
+            position: sticky;
+            top: 0;
+            padding: 50px;
+            border: 2px solid #666;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Graphic Era Hill University (GEHU)</h1>
+        <p>Empowering Education, Enriching Lives</p>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#programs">Programs</a></li>
+            <li><a href="#admissions">Admissions</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section id="home" class="box static">
+            <h2>Welcome to GEHU</h2>
+            <p>Graphic Era Hill University is a place where talent meets opportunity.</p>
+        </section>
+        <section id="about" class="box relative">
+            <h2>About Us</h2>
+            <p>Founded in 2011, GEHU has quickly become a leading institution in the field of higher education.</p>
+        </section>
+        <section id="programs" class="box">
+            <h2>Our Programs</h2>
+            <div class="absolute-container">
+                <article class="absolute">
+                    <h3>Engineering</h3>
+                    <p>Our engineering programs are designed to equip students with the skills needed to excel in the rapidly changing technology landscape.</p>
+                </article>
+            </div>
+            <article class="box">
+                <h3>Management</h3>
+                <p>The management programs at GEHU aim to develop future leaders with a strong ethical foundation and global perspective.</p>
+            </article>
+            <article class="box">
+                <h3>Arts & Humanities</h3>
+                <p>Explore our diverse range of programs in arts and humanities, fostering creativity and critical thinking.</p>
+            </article>
+        </section>
+        <section id="admissions" class="box fixed">
+            <h2>Admissions</h2>
+            <p>Join our vibrant community of learners.</p>
+        </section>
+        <section id="contact" class="box sticky">
+            <h2>Contact Us</h2>
+            <address>
+                Graphic Era Hill University<br>
+                Bhimtal Campus, Uttarakhand, India<br>
+                Email: <a href="mailto:info@gehu.ac.in">info@gehu.ac.in</a><br>
+                Phone: +91-12345-67890
+            </address>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Graphic Era Hill University. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+ 
+Q4) Insert a new element, modify an exisiting element, and delete an element using Javascript DOM.
+
+<!DOCTYPE html>
+<head>
+    <title>DOM Manipulation Example</title>
+</head>
+<body>
+    <h1 id="heading">Original Heading</h1>
+
+    <button onclick="insertNewElement()">Insert New Element</button>
+    <button onclick="modifyElement()">Modify Element</button>
+    <button onclick="deleteElement()">Delete Element</button>
+
+    <script>
+        function insertNewElement() {
+            var paragraph = document.createElement("p");
+            paragraph.textContent = "This is a new paragraph.";
+            document.body.appendChild(paragraph);
+        }
+
+        function modifyElement() {
+            var heading = document.getElementById("heading");
+            heading.textContent = "Modified Heading";
+            heading.style.color = "blue";
+        }
+
+        function deleteElement() {
+            var paragraph = document.querySelector("p");
+            if (paragraph) {
+                paragraph.parentNode.removeChild(paragraph);
+            }
+        }
+    </script>
+</body>
+</html>
+
+
+ 
+Q5) Demonstrate an Ajax call using JQuery.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Ajax Call using jQuery</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1>Ajax Call using jQuery</h1>
+    <button id="fetchData">Fetch Data</button>
+    <div id="result"></div>
+
+    <script>
+        $(document).ready(function() {
+            $('#fetchData').click(function() {
+                $.ajax({
+                    url: 'https://jsonplaceholder.typicode.com/posts/1', 
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(data) {\
+                        var resultHtml = `
+                            <h2>${data.title}</h2>
+                            <p>${data.body}</p>
+                        `;
+                        $('#result').html(resultHtml);
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle any errors here
+                        $('#result').html('<p>An error occurred: ' + error + '</p>');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
+ 
+
+Q6) Demonstrate 1d and 2d array in PHP. Also, demonstrate any 5 string functions in PHP.
+
+<?php
+// 1D Array
+$fruits = array("Apple", "Banana", "Orange", "Mango", "Grapes");
+echo "<h2>1D Array:</h2>";
+echo "Fruits: ";
+foreach ($fruits as $fruit) {
+    echo "$fruit, ";
+}
+// 2D Array
+$students = array(
+    array("John", 25, "Male"),
+    array("Alice", 22, "Female"),
+    array("Bob", 24, "Male")
+);
+
+echo "<h2>2D Array:</h2>";
+foreach ($students as $student) {
+    foreach ($student as $value) {
+        echo "$value”;
+    }
+}
+
+$str = "Hello, World!";
+echo "<h4>String = $str</h4>";
+echo "<h2>String Functions:</h2>";
+
+echo "1. Length of '$str' is: " . strlen($str) . "<br>";
+
+echo "2. Uppercase: " . strtoupper($str) . "<br>";
+
+echo "3. Lowercase: " . strtolower($str) . "<br>";
+
+echo "4. Substring: " . substr($str, 7, 5) . "<br>";
+
+echo "5. Position of 'World' in '$str' is: " . strpos($str, "World") . "<br>";
+?>
+
+
+ 
+Q7) Create a form accepting username and password. Using PHP, connect to a database, and insert the data recieved from the user.
+
+//form.html
+
+<html>
+<head>
+    <title>User Registration Form</title>
+</head>
+<body>
+    <h1>User Registration Form</h1>
+    <form action="process_form.php" method="POST">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+        <button type="submit">Register</button>
+    </form>
+</body>
+</html>
+
+//process_form.php
+<?php
+if($_SERVER["REQUEST_METHOD"]=="POST"){
+    $username=$_POST["username"];
+    $password=$_POST["password"];
+    $conn=mysqli_connect("localhost","root","");
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+    $q="CREATE DATABASE IF NOT EXISTS DATA";
+    mysqli_query($conn,$q);
+    $q1="USE DATA";
+    mysqli_query($conn,$q1);
+    $q2="CREATE TABLE IF NOT EXISTS USER(
+        id INT AUTO_INCREMENT PRIMARY KEY, username VARCHAR(255) NOT NULL,
+        password VARCHAR(255) NOT NULL)";
+    mysqli_query($conn,$q2);
+    $sql="INSERT INTO USER VALUES(NULL, '$username','$password')";
+    if (mysqli_query($conn, $sql)) {
+        echo "Record Inserted Successfully";
+    } else {
+        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    }
+    $conn->close();
+}
+?>
+Q8) Create a sample React application using functional components.
+
+//App.js
+
+import './App.css';
+import React from 'react';
+import Header from './comp/Header';
+import Counter from './comp/Counter';
+
+function App() {
+  return (
+    <div>
+    <Header/>
+    <Counter/>
+    </div>
+  );
+}
+export default App;
+
+//Header
+
+function Header(){
+    return (<h1>Simple Counter App</h1>);
+}
+export default Header;
+
+//Counter 
+
+import React, { useState } from 'react';
+const Counter = () => {
+  const [count, setCount] = useState(0);
+
+  function increment(){
+    setCount(count + 1);
+  };
+  return (
+    <div>
+      <h4>Counter: {count}</h4>
+      <button onClick={increment}>Increment</button>
+    </div>
+  );
+};
+
+export default Counter;
+
+
+Q9) Using React Router, demonstrate navigation among various pages of a React application.
+
+//App.js
+
+import './App.css';
+import { BrowserRouter, Route, Link, Routes } from 'react-router-dom';
+import React from 'react';
+import Home from './comp/Home';
+import About from './comp/About';
+import Contact from './comp/Contact';
+
+function App() {
+  return (
+    <BrowserRouter>
+      <div className="App">
+        <ul>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/about">About</Link></li>
+          <li><Link to="/contact">Contact</Link></li>
+        </ul>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
+  );
+}
+
+export default App;
+
+// Home.jsx
+
+import React from 'react';
+
+function Home(){
+    return (
+        <div>
+          <h1>Home Page</h1>
+          <p>Welcome to the home page!</p>
+        </div>
+      );
+}
+
+export default Home;
+//About.jsx
+
+import React from "react";
+
+function About(){
+    return (
+        <div>
+          <h1>About Page</h1>
+          <p>This is the about page.</p>
+        </div>
+      );
+}
+
+export default About;
+
+//Contact.jsx
+
+import React from "react";
+
+function Contact(){
+    return (
+        <div>
+          <h1>Contact Page</h1>
+          <p>This is the contact page.</p>
+        </div>
+      );
+}
+
+export default Contact;
+
+
+ 
+Q10) Implement form validation in React.
+
+//App.js
+
+import './App.css';
+import React from 'react';
+import FormValidation from './comp/FormValidation';
+
+function App() {
+  return (
+    <FormValidation/>
+  );
+}
+
+export default App;
+
+// FormValidation.jsx
+
+import React, { useState } from 'react';
+
+function FormValidation() {
+    const [formData, setFormData] = useState({
+        username: '',
+        password: ''
+    });
+    const [errors, setErrors] = useState({
+        username: '',
+        password: ''
+    });
+    const [isSubmitted, setIsSubmitted] = useState(false);
+
+    function handleChange(e) {
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value
+        });
+    }
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        let errors = {};
+        if (!formData.username.trim()) {
+            errors.username = 'Username is required';
+        }
+        if (!formData.password.trim()) {
+            errors.password = 'Password is required';
+        }
+        setErrors(errors);
+        if (Object.keys(errors).length === 0) {
+            setIsSubmitted(true);
+            console.log('Form submitted:', formData);
+        }
+    }
+
+    return (
+        <div>
+            <h2>User Registration</h2>
+            {isSubmitted ? (
+                <div>
+                    <p>Form successfully submitted!</p>
+                </div>
+            ) : (
+                <form onSubmit={handleSubmit}>
+                    <div>
+                        <label htmlFor="username">Username:</label>
+                        <input type="text" id="username" name="username" value={formData.username}
+                            onChange={handleChange}
+                        />
+                        {errors.username && <span style={{ color: 'red' }}>{errors.username}</span>}
+                    </div>
+                    <div>
+                        <label htmlFor="password">Password:</label>
+                        <input type="password" id="password" name="password" value={formData.password}
+                            onChange={handleChange}
+                        />
+                        {errors.password && <span style={{ color: 'red' }}>{errors.password}</span>}
+                    </div>
+                    <button type="submit">Submit</button>
+                </form>
+            )}
+        </div>
+    );
+}
+
+export default FormValidation;
+
+
+
+
+
+ 
+Q11) Use axios library to fetch data from a URL.
+//App.js
+import './App.css';
+import React, { useState } from 'react';
+import axios from 'axios';
+function App() {
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
+
+  const fetchData = () => {
+    axios.get('https://jsonplaceholder.typicode.com/posts/1')
+      .then(response => {
+        setData(response.data);
+        setError(null); // Clear any previous errors
+      })
+      .catch(error => {
+        setError(error.message);
+        setData(null); 
+      });
+  };
+
+  return (
+    <div className="App">
+      <h1>Axios Call in React</h1>
+      <button onClick={fetchData}>Fetch Data</button>
+      <div id="result">
+        {error && <p>An error occurred: {error}</p>}
+        {data && (
+          <div>
+            <h2>{data.title}</h2>
+            <p>{data.body}</p>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+export default App;
