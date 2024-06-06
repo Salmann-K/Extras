@@ -1,0 +1,60 @@
+import React from "react";
+import { useState } from "react";
+function Formv()
+{
+    const [name,setname]=useState("");
+    const [age,setage]=useState(0);
+    const [errors,seterror]=useState({
+        username:"",
+        age:""
+    });
+    const [isubmit,Setissubmit]=useState(false);
+
+    function handlesubmit(e)
+    {
+        const newerror={
+            username:"",
+            age:""
+        }
+        e.preventDefault();
+        let isValid=true;
+        if(name.trim()=="")
+            {
+               newerror.username="wrong value of name";
+                isValid=false;
+            }
+        if(age.trim()==""||age<18|| isNaN(age))
+            {
+                newerror.age="wrong value of age";
+                
+                isValid=false;
+            }
+            seterror(newerror)
+        if(isValid)
+            {
+                Setissubmit(isValid);
+                seterror({username:"is correct",
+                    age:"is correct"
+                });
+            }
+        
+    }
+
+    return(
+        <>
+        <form onSubmit={handlesubmit}>
+           <label>name
+            <input type="text" id="name" value={name} onChange={(e)=>setname(e.target.value)}/>
+            {errors && <p>{errors.username}</p>}
+           </label>
+           <label>Age
+            <input type="number" id="age" value={age} onChange={(e)=>setage(e.target.value)}/>
+            {errors && <p>{errors.age}</p>}
+           </label>
+           <button>Submit</button>
+           {isubmit && <p>form submitted successfully</p>}
+        </form>
+        </>
+    )
+}
+export default Formv;
