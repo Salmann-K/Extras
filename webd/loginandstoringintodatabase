@@ -1,0 +1,44 @@
+//form.html
+
+<html>
+<head>
+    <title>User Registration Form</title>
+</head>
+<body>
+    <h1>User Registration Form</h1>
+    <form action="process_form.php" method="POST">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+        <button type="submit">Register</button>
+    </form>
+</body>
+</html>
+
+//process_form.php
+<?php
+if($_SERVER["REQUEST_METHOD"]=="POST"){
+    $username=$_POST["username"];
+    $password=$_POST["password"];
+    $conn=mysqli_connect("localhost","root","");
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+    $q="CREATE DATABASE IF NOT EXISTS DATA";
+    mysqli_query($conn,$q);
+    $q1="USE DATA";
+    mysqli_query($conn,$q1);
+    $q2="CREATE TABLE IF NOT EXISTS USER(
+        id INT AUTO_INCREMENT PRIMARY KEY, username VARCHAR(255) NOT NULL,
+        password VARCHAR(255) NOT NULL)";
+    mysqli_query($conn,$q2);
+    $sql="INSERT INTO USER VALUES(NULL, '$username','$password')";
+    if (mysqli_query($conn, $sql)) {
+        echo "Record Inserted Successfully";
+    } else {
+        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    }
+    $conn->close();
+}
+?>
