@@ -1,0 +1,25 @@
+// Create a new XMLHttpRequest object
+var xhr = new XMLHttpRequest();
+
+// Configure the request
+xhr.open('GET', 'https://api.example.com/data', true); // true for asynchronous request
+
+// Set up event listeners to handle response
+xhr.onload = function() {
+  if (xhr.status >= 200 && xhr.status < 300) {
+    // Request was successful, handle the response data here
+    var responseData = JSON.parse(xhr.responseText);
+    console.log('Response data:', responseData);
+  } else {
+    // Request failed
+    console.error('Request failed:', xhr.statusText);
+  }
+};
+
+xhr.onerror = function() {
+  // Request failed due to network error
+  console.error('Network error occurred');
+};
+
+// Send the request
+xhr.send();
