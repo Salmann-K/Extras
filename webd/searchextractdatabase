@@ -1,0 +1,77 @@
+<?php
+$servername = "localhost";
+$username = "root";
+$password = ""; 
+$dbname = "mydatabase";
+
+$conn=mysqli_connect($servername, $username, $password);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+
+$sql = "CREATE DATABASE IF NOT EXISTS $dbname";
+if (!mysqli_query($conn, $sql)) {
+    die("Error creating database: " . mysqli_error($conn));
+}
+$q="USE $dbname";
+mysqli_query($conn,$q);
+
+$sql = "CREATE TABLE IF NOT EXISTS users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    address VARCHAR(100) NOT NULL
+)";
+if (!mysqli_query($conn, $sql)) {
+    die("Error creating table: " . mysqli_error($conn));
+}
+
+$sql = "INSERT INTO users (first_name, last_name, address) VALUES 
+    ('John', 'Doe', '123 Elm St'),
+    ('Jane', 'Smith', '456 Oak St'),
+    ('John', 'Smith', '789 Pine St'),
+    ('Alice', 'Johnson', '101 Maple St'),
+    ('Bob', 'Brown', '202 Oak St')";
+mysqli_query($conn, $sql);
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['first_name'])) {
+
+    $first_name =mysqli_real_escape_string($conn, $_POST['first_name']);
+
+    $sql = "SELECT last_name, address FROM users WHERE first_name = '$first_name'";
+    $result = mysqli_query($conn, $sql);
+
+    if (!$result) {
+        die("Error executing query: " . mysqli_error($conn));
+    }
+
+    if (mysqli_num_rows($result) > 0) {
+        echo "<h2>Results for '$first_name':</h2>";
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo "Last Name: " . $row["last_name"] . "<br>";
+            echo "Address: " . $row["address"] . "<br><br>";
+        }
+        echo "<p>Total rows found: " . mysqli_num_rows($result) . "</p>";
+    } else {
+        echo "0 results found for '$first_name'";
+    }
+}
+
+mysqli_close($conn);
+?>
+
+<html>
+<html>
+<head><title>Search User</title>
+</head>
+<body>
+    <h1>Search for a User by First Name</h1>
+    <form action="search.php" method="post">
+        <label for="first_name">First Name:</label>
+        <input type="text" id="first_name" name="first_name" required>
+        <button type="submit" name="submit">Search</button>
+    </form>
+</body>
+</html>
