@@ -1,0 +1,97 @@
+// index.php
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+</head>
+<body>
+    <h1>Welcome to the Home Page</h1>
+    <a href="login.php">Login</a>
+</body>
+</html>
+
+// login.php
+
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $username = $_POST['user'];
+    $password = $_POST['pass'];
+
+    $validuser = 'salman';
+    $validpass = 'sk123';
+
+    if ($username == $validuser && $password == $validpass) {
+        setcookie('user', $username, time() + (86400 * 30), "/");
+        setcookie('bg_image', 'background.jpg', time() + (86400 * 30), "/");
+        setcookie('font_color', '#0000FF', time() + (86400 * 30), "/");
+        setcookie('font', 'Verdana', time() + (86400 * 30), "/");
+        
+        header('Location: welcome.php');
+        exit;
+    } else {
+        echo 'Invalid Username or Password';
+    }
+}
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+</head>
+<body>
+    <h1>Login</h1>
+    <form action="login.php" method="POST">
+        Username: <input type="text" name="user" required><br>
+        Password: <input type="password" name="pass" required><br>
+        <input type="submit" value="LOGIN">
+    </form>
+</body>
+</html>
+
+//Welcome.php
+
+<?php
+if (!isset($_COOKIE['user'])) {
+    header('Location: login.php');
+    exit;
+}
+
+// Set default preferences if cookies are not set
+$bg_image = isset($_COOKIE['bg_image']) ? $_COOKIE['bg_image'] : 'background.jpg';
+$font_color = isset($_COOKIE['font_color']) ? $_COOKIE['font_color'] : '#0000FF';
+$font = isset($_COOKIE['font']) ? $_COOKIE['font'] : 'Verdana';
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome</title>
+    <style>
+        body {
+            background-image: url('<?php echo $bg_image; ?>');
+            color: <?php echo $font_color; ?>;
+            font-family: <?php echo $font; ?>;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome, <?php echo $_COOKIE['user']; ?>!</h1>
+    <a href="logout.php">Logout</a>
+</body>
+</html>
+
+
+//logout.php
+
+<?php
+// Clear the cookies
+setcookie('user', '', time() - 3600, "/");
+setcookie('bg_image', '', time() - 3600, "/");
+setcookie('font_color', '', time() - 3600, "/");
+setcookie('font', '', time() - 3600, "/");
+
+header('Location: index.php');
+exit;
+?>
